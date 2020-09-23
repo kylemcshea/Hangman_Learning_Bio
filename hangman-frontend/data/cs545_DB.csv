@@ -1,0 +1,49 @@
+﻿id,Vocabulary,Definition
+1,polar,Molecule with partial charges. Mixes with water.
+2,nonpolar,No partial charges. Do not mix with water.
+3,electronegativity,Attraction of an atom for electrons in a covalent bond.
+4,cohesion,Water molecules sticking to each other.
+5,adhesion,Water molecules sticking to other surfaces.
+6,solute,Something dissolved in a solution.
+7,solvent,Dissolving agent of a solution.
+8,isomers,Same atoms but different arrangement.
+9,structural isomers,Differ in arrangement of atoms.
+10,geometric isomer,Differ in arrangement around a double bond.
+11,enantiomers,Structures that are like a mirror-image.
+12,alpha glucose,Monomer for starch and glycogen.
+13,beta glucose,Monomer for cellulose and chitin.
+14,cellulose,Carbohydrate component of plant cell walls.
+15,starch,Storage polysaccharide of plants.
+16,glycogen,Extremely branched polymer of glucose.
+17,chitin,Polysaccharide found in arthropod exoskeletons and fungal cell walls.
+18,tryiacylglycerol,Glycerol and three fatty acids.
+19,steroids,Made of four rings of carbon.
+20,cholesterol,"Steroid common in cell membranes, also in many hormones."
+21,peptide bond,Bonds that connect amino acids.
+22,Fredrick Sanger,Determined amino acid sequence of proteins.
+23,disulphide bridges,Reinforce tertiary structure.
+24,primary structure,Chain of amino acids.
+25,secondary structure,Either an alpha helix or beta pleated sheet.
+26,tertiary structure,Results from interactions between side chains.
+27,quaternary structure,Results from two or more polypeptide subunits.
+28,purines,Bases with a double-ring structure.
+29,pyrimidines,Bases with a single-ring structure.
+30,phosphodiester bonds,Bonds between phosphate group and pentose sugar in nucleic acids.
+31,synthesis,To put together.
+32,digestion,To break apart.
+33,dehydration synthesis,Condensation reaction where molecules are connected by loss of a water molecule.
+34,hydrolysis,Reaction where water split into two hydrogens and one oxygen; this breaks a polymer.
+35,anabolism,"Metabolic pathways that construct molecules, requiring energy."
+36,catabolism,"Metabolic pathways that break down molecules, releasing energy."
+37,natural selection,A population can change over time if individuals with more fit traits leave more offspring than less fit individuals.
+38,evolutionary adaptation,An accumulation of inherited characteristics that enhance organisms' ability to survive and reproduce in specific environments.
+39,artificial selection,Humans modifying species for desired traits through selective breeding.
+40,decent with modification,Darwin's way of referring to evolution.
+41,MRSA,Methicillin-resistant Staphylococcus aureus.
+42,fitness,Individuals whose inherited traits confer an advantage have a better chance of surviving in a given environment and will leave more offspring.
+43,homology,Similarity resulting from common ancestry.
+44,homologous structures,"Same structure, different function. Comes from common ancestor."
+45,comparative embryology,Embryos of vertebrates share many anatomical homologies.
+46,vestigial structures,"Are little or no importance to organism, but remain from an ancestor."
+47,biogeography,Geographic distribution of species.
+48,microevolution,Change in genetic makeup of a population from generation to generation.
