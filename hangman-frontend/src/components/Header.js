@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Nunito",
   },
   appbarTitle: {
-    color: "#4d0aab",
+    color: "#fff",
     flexGrow: "1",
   },
   appbarWrapper: {
@@ -34,12 +34,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2rem",
   },
   title: {
-    color: "#4d0aab",
+    color: "#fff",
     fontSize: "3rem",
     fontFamily: "Nunito",
   },
   dropDown: {
-    color: "#4d0aab",
+    color: "#fff",
     fontSize: "3rem",
   },
 }));
