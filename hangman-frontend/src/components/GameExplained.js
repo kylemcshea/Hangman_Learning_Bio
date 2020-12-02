@@ -15,7 +15,7 @@ export default function GameExplained() {
   const classes = useStyles();
   const checked = useWindowPosition("header");
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="game-explained">
       <ImageCard photo={photos[0]} checked={checked} />
       <ImageCard photo={photos[1]} checked={checked} />
     </div>
