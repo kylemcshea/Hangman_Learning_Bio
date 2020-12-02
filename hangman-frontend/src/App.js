@@ -6,7 +6,7 @@ import GameExplained from "./components/GameExplained";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100vh",
-    backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpeg"})`,
+    backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg1.jpeg"})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },

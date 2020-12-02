@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Collapse } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
     maxWidth: 345,
     backgroundColor: "rgba(0,0,0,0.2)",
     color: "#fff",
+    margin: "20px",
   },
   media: {
     height: 250,
@@ -29,34 +31,40 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImageCard({ photo }) {
+export default function ImageCard({ photo, checked }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={photo.imageUrl}
-        title="Contemplative Reptile"
-      />
-      <CardContent>
-        <Typography
-          className={classes.title}
-          gutterBottom
-          variant="h5"
-          component="h2"
-        >
-          {photo.title}
-        </Typography>
-        <Typography
-          className={classes.desc}
-          variant="body2"
-          color="textSecondary"
-          component="p"
-        >
-          {photo.desc}
-        </Typography>
-      </CardContent>
-    </Card>
+    <Collapse
+      in={checked}
+      {...(checked ? { timeout: 1000 } : {})}
+      collapsedHeight={50}
+    >
+      <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          image={photo.imageUrl}
+          title={photo.title}
+        />
+        <CardContent>
+          <Typography
+            className={classes.title}
+            gutterBottom
+            variant="h5"
+            component="h2"
+          >
+            {photo.title}
+          </Typography>
+          <Typography
+            className={classes.desc}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
+            {photo.desc}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Collapse>
   );
 }
