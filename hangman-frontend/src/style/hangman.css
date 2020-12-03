@@ -4,13 +4,35 @@
   align-items: "center" !important;
   position: "absolute" !important;
   bottom: 10px !important;
+  text-align: center;
 }
 .alphaBox1 {
   display: "flex";
+  align-items: "center";
 }
 .alphaBox2 {
   display: "flex";
+  align-items: "center";
 }
 .buttonGroup {
   margin: 5px 10px 5px 10px !important;
+}
+.image-box {
+  align-items: "center" !important;
+  position: "absolute" !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.hangman-info {
+  align-items: "center" !important;
+  position: "absolute" !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: "Nunito";
+  font-size: 2rem;
 }

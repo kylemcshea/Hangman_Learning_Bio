@@ -12,11 +12,12 @@ class Hangman extends React.Component {
 
   constructor(props) {
     super(props);
+    let info = randomWord();
     this.state = {
       stage: 0,
       guessed: new Set([]),
-      answer: randomWord().Vocabulary.toUpperCase(),
-      definition: randomWord().Definition,
+      answer: info.Vocabulary.toUpperCase(),
+      definition: info.Definition,
     };
   }
   handleClick = (e) => {
@@ -82,14 +83,19 @@ class Hangman extends React.Component {
     return (
       <div>
         <img
+          className="image-box"
           src={
             process.env.PUBLIC_URL +
             `/assets/hangman_step_${this.state.stage}.png`
           }
         ></img>
-        <p>{this.state.definition}</p>
-        <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
-        <p>{gameWin ? <p>You win!</p> : <p></p>}</p>
+        <div className="hangman-info">
+          <p>{this.state.definition}</p>
+          <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
+          <p>
+            {gameWin ? <p>You win!</p> : gameOver ? <p>You Lose!</p> : <p></p>}
+          </p>
+        </div>
         {gameKeys}
       </div>
     );
