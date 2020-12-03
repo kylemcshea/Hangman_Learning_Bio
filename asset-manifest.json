@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Hangman_Learning_Bio/static/css/main.df66e512.chunk.css",
+    "main.js": "/Hangman_Learning_Bio/static/js/main.120da325.chunk.js",
+    "main.js.map": "/Hangman_Learning_Bio/static/js/main.120da325.chunk.js.map",
+    "runtime-main.js": "/Hangman_Learning_Bio/static/js/runtime-main.a0d89ea2.js",
+    "runtime-main.js.map": "/Hangman_Learning_Bio/static/js/runtime-main.a0d89ea2.js.map",
+    "static/js/2.80ed2e21.chunk.js": "/Hangman_Learning_Bio/static/js/2.80ed2e21.chunk.js",
+    "static/js/2.80ed2e21.chunk.js.map": "/Hangman_Learning_Bio/static/js/2.80ed2e21.chunk.js.map",
+    "index.html": "/Hangman_Learning_Bio/index.html",
+    "precache-manifest.225118620df69b6bb2e73943dfd3af12.js": "/Hangman_Learning_Bio/precache-manifest.225118620df69b6bb2e73943dfd3af12.js",
+    "service-worker.js": "/Hangman_Learning_Bio/service-worker.js",
+    "static/css/main.df66e512.chunk.css.map": "/Hangman_Learning_Bio/static/css/main.df66e512.chunk.css.map",
+    "static/js/2.80ed2e21.chunk.js.LICENSE.txt": "/Hangman_Learning_Bio/static/js/2.80ed2e21.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0d89ea2.js",
+    "static/js/2.80ed2e21.chunk.js",
+    "static/css/main.df66e512.chunk.css",
+    "static/js/main.120da325.chunk.js"
+  ]
+}
