@@ -12,5 +12,4 @@ const places = [
     time: 1500,
   },
 ];
-
 export default places;
