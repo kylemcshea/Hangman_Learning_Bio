@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import alphabet from "../static/alphabet";
 import "../style/hangman.css";
+import { randomWord } from "./Words";
 
 class Hangman extends React.Component {
   static defaultProps = {
@@ -14,7 +15,8 @@ class Hangman extends React.Component {
     this.state = {
       stage: 0,
       guessed: new Set([]),
-      answer: "YEET",
+      answer: randomWord().Vocabulary.toUpperCase(),
+      definition: randomWord().Definition,
     };
   }
   handleClick = (e) => {
@@ -85,6 +87,7 @@ class Hangman extends React.Component {
             `/assets/hangman_step_${this.state.stage}.png`
           }
         ></img>
+        <p>{this.state.definition}</p>
         <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
         <p>{gameWin ? <p>You win!</p> : <p></p>}</p>
         {gameKeys}
