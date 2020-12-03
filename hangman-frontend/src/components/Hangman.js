@@ -17,57 +17,16 @@ class Hangman extends React.Component {
       answer: "YEET",
     };
   }
-  componentDidMount() {
-    let tempAnswer = this.state.answer;
-    let displayAns = tempAnswer.split("").map(() => {
-      return "_";
-    });
-    this.setState = {
-      displayAnswer: displayAns,
-    };
-  }
-  renderAnswer = () => {
-    let tempAnswer = this.state.answer;
-    let displayAnswer = tempAnswer.split("").map((char, key) => {
-      this.state.trueGuess.includes(char)
-        ? (tempAnswer[key] = char)
-        : (tempAnswer[key] = "_");
-    });
-    return displayAnswer;
-  };
   handleClick = (e) => {
-    let letter = e.target.value;
-    this.setState((prevState) => {
+    let letter = e;
+    console.log(letter);
+    this.setState((st) => {
       return {
-        guessed: prevState.guessed.add(letter),
-        stage: prevState.stage + (prevState.answer.includes(letter) ? 0 : 1),
+        guessed: st.guessed.add(letter),
+        stage: st.stage + (st.answer.includes(letter) ? 0 : 1),
       };
     });
   };
-  //   handleClick = (choice) => {
-  //     let tempAnswer = this.state.answer;
-  //     let choiceChar = choice.target.innerHTML;
-  //     if (tempAnswer.includes(choiceChar)) {
-  //       this.setState((prevState) => {
-  //         return { trueGuess: prevState.trueGuess.concat(choiceChar) };
-  //       });
-  //     } else {
-  //       this.setState((prevState) => {
-  //         return {
-  //           falseGuess: prevState.falseGuess.concat(choiceChar),
-  //           stage: prevState.stage + 1,
-  //         };
-  //       });
-  //     }
-  //     // current stage of hangman
-  //     console.log(this.state.stage);
-  //     //letter clicked
-  //     console.log(choice.target.innerHTML);
-  //     //correct answer array
-  //     console.log(this.state.trueGuess);
-  //     //false answer array
-  //     console.log(this.state.falseGuess);
-  //   };
   guessedWord() {
     return this.state.answer
       .split("")
@@ -80,7 +39,7 @@ class Hangman extends React.Component {
           {alphabet.slice(0, 13).map((char, key) => (
             <Button
               key={key}
-              onClick={this.handleClick}
+              onClick={(e) => this.handleClick(e.target.innerHTML)}
               disabled={this.state.guessed.has(char)}
               className="buttonGroup"
               variant="contained"
@@ -95,7 +54,7 @@ class Hangman extends React.Component {
           {alphabet.slice(13, 26).map((char, key) => (
             <Button
               key={key}
-              onClick={this.handleClick}
+              onClick={(e) => this.handleClick(e.target.innerHTML)}
               disabled={this.state.guessed.has(char)}
               className="buttonGroup"
               variant="contained"
@@ -109,9 +68,15 @@ class Hangman extends React.Component {
     );
   }
   render() {
-    console.log(this.state.displayAnswer);
+    //Buttons for game
     let gameKeys = this.generateButtons();
     const gameOver = this.state.stage >= this.props.maxWrong;
+    //String version of the display answer so we can compare to real answer
+    let stringAns = this.guessedWord()
+      .join()
+      .replace(",", "")
+      .replace(/,/g, "");
+    const gameWin = stringAns == this.state.answer;
     return (
       <div>
         <img
@@ -121,6 +86,7 @@ class Hangman extends React.Component {
           }
         ></img>
         <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
+        <p>{gameWin ? <p>You win!</p> : <p></p>}</p>
         {gameKeys}
       </div>
     );

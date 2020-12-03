@@ -2,7 +2,7 @@ const places = [
   {
     title: "Learning, but fun!",
     desc: "Drop that textbook, lets play some games to learn!",
-    imageUrl: process.env.PUBLIC_URL + "/assets/hangman_step_six.png",
+    imageUrl: process.env.PUBLIC_URL + "/assets/hangman_step_6.png",
     time: 1500,
   },
   {
