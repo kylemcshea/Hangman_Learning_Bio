@@ -93,9 +93,13 @@ class Hangman extends React.Component {
         <div className="hangman-info">
           <p>{this.state.definition}</p>
           <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
-          <p>
-            {gameWin ? <WinLossModal /> : gameOver ? <p>You Lose!</p> : <p></p>}
-          </p>
+          {gameWin ? (
+            <WinLossModal victory={true} />
+          ) : gameOver ? (
+            <WinLossModal victory={false} />
+          ) : (
+            <p></p>
+          )}
         </div>
         {gameKeys}
       </div>

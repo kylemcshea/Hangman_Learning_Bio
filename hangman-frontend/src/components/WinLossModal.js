@@ -11,7 +11,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function WinLossModal() {
+export default function WinLossModal(prop) {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -33,8 +33,7 @@ export default function WinLossModal() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
+            {prop.victory ? "You Win" : "You Lose"}!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
