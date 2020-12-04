@@ -45,7 +45,7 @@ export default function WinLossModal(prop) {
             Close
           </Button>
           <Button onClick={playAgain} color="primary">
-            Play Agian
+            Play Again
           </Button>
         </DialogActions>
       </Dialog>

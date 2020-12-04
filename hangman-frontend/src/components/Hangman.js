@@ -144,7 +144,6 @@ class Hangman extends React.Component {
     const gameWin = stringAns === this.state.answer;
     return (
       <div>
-        {difficultSelection}
         <img
           className="image-box"
           alt={`hangman_${this.state.stage}`}
@@ -154,6 +153,7 @@ class Hangman extends React.Component {
           }
         ></img>
         <div className="hangman-info">
+          <div className="radio">{difficultSelection}</div>
           <p>{this.state.definition}</p>
           <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
           {gameWin ? (

@@ -26,12 +26,20 @@
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+.radio {
+  background-color: rgba(0, 255, 242, 0.5);
+  width: 50%;
+  border-radius: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
 .hangman-info {
   align-items: "center" !important;
   position: "absolute" !important;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
   text-align: center;
   font-family: "Nunito";
   font-size: 2rem;
