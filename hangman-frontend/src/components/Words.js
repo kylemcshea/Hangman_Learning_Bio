@@ -171,7 +171,7 @@ let wordGuess = [
     id: 34,
     Vocabulary: "hydrolysis",
     Definition:
-      "Reaction where water split into \u000btwo hydrogens and one oxygen; this breaks a polymer.",
+      "Reaction where water split into two hydrogens and one oxygen; this breaks a polymer.",
   },
   {
     id: 35,
