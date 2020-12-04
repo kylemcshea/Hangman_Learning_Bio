@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 import alphabet from "../static/alphabet";
 import "../style/hangman.css";
 import { randomWord } from "./Words";
+import WinLossModal from "./WinLossModal";
 
 class Hangman extends React.Component {
   static defaultProps = {
@@ -42,8 +43,8 @@ class Hangman extends React.Component {
           {alphabet.slice(0, 13).map((char, key) => (
             <Button
               key={key}
-              onClick={(e) => this.handleClick(e.target.innerHTML)}
-              disabled={this.state.guessed.has(char)}
+              onClick={() => this.handleClick(char.toUpperCase())}
+              disabled={this.state.guessed.has(char.toUpperCase())}
               className="buttonGroup"
               variant="contained"
               color="secondary"
@@ -57,8 +58,8 @@ class Hangman extends React.Component {
           {alphabet.slice(13, 26).map((char, key) => (
             <Button
               key={key}
-              onClick={(e) => this.handleClick(e.target.innerHTML)}
-              disabled={this.state.guessed.has(char)}
+              onClick={() => this.handleClick(char.toUpperCase())}
+              disabled={this.state.guessed.has(char.toUpperCase())}
               className="buttonGroup"
               variant="contained"
               color="secondary"
@@ -93,7 +94,7 @@ class Hangman extends React.Component {
           <p>{this.state.definition}</p>
           <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
           <p>
-            {gameWin ? <p>You win!</p> : gameOver ? <p>You Lose!</p> : <p></p>}
+            {gameWin ? <WinLossModal /> : gameOver ? <p>You Lose!</p> : <p></p>}
           </p>
         </div>
         {gameKeys}
