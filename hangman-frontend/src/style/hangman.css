@@ -17,6 +17,9 @@
 .buttonGroup {
   margin: 5px 10px 5px 10px !important;
 }
+.buttonGroup:active {
+  transform: translateY(4px);
+}
 .image-box {
   align-items: "center" !important;
   position: "absolute" !important;

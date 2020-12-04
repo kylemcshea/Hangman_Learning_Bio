@@ -20,7 +20,6 @@ class Hangman extends React.Component {
   };
 
   handleChange = (event) => {
-    let diff = event.target.value;
     this.setState({
       difficulty: event.target.value,
     });
@@ -58,6 +57,7 @@ class Hangman extends React.Component {
     });
   };
   guessedWord() {
+    console.log(this.state.answer);
     return this.state.answer
       .split("")
       .map((char) => (this.state.guessed.has(char) ? char : " _ "));
