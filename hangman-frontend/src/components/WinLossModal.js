@@ -18,6 +18,10 @@ export default function WinLossModal(prop) {
     setOpen(false);
   };
 
+  const playAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       <Dialog
@@ -29,7 +33,7 @@ export default function WinLossModal(prop) {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">
-          {"Use Google's location service?"}
+          {prop.victory ? "Congratulations" : "Game Over"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
@@ -38,10 +42,10 @@ export default function WinLossModal(prop) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Disagree
+            Close
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Agree
+          <Button onClick={playAgain} color="primary">
+            Play Agian
           </Button>
         </DialogActions>
       </Dialog>
