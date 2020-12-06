@@ -6,12 +6,15 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function WinLossModal(prop) {
+  const { width, height } = useWindowSize();
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -24,6 +27,7 @@ export default function WinLossModal(prop) {
 
   return (
     <div>
+      {prop.victory ? <Confetti width={width} height={height} /> : <></>}
       <Dialog
         open={open}
         TransitionComponent={Transition}

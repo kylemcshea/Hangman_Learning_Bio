@@ -15,12 +15,13 @@ import WinLossModal from "./WinLossModal";
 
 class Hangman extends React.Component {
   static defaultProps = {
-    maxWrong: 6,
+    maxWrong: 12,
   };
 
   handleChange = (event) => {
-    console.log(event.target.value);
-    this.setState({ difficulty: event.target.value });
+    this.setState({
+      difficulty: event.target.value,
+    });
   };
 
   constructor(props) {
@@ -40,7 +41,17 @@ class Hangman extends React.Component {
     this.setState((st) => {
       return {
         guessed: st.guessed.add(letter),
-        stage: st.stage + (st.answer.includes(letter) ? 0 : 1),
+        stage:
+          st.stage +
+          (st.answer.includes(letter)
+            ? 0
+            : st.difficulty == "Easy"
+            ? 1
+            : st.difficulty == "Medium"
+            ? 2
+            : st.difficulty == "Hard"
+            ? 3
+            : ""),
       };
     });
   };
@@ -151,7 +162,7 @@ class Hangman extends React.Component {
     const gameWin = stringAns === this.state.answer;
     return (
       <div className="hangman-root">
-        {difficultSelection}
+        {this.state.guessed.size == 0 && difficultSelection}
         <img
           className="image-box"
           alt={`hangman_${this.state.stage}`}
