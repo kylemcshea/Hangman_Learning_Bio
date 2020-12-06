@@ -25,11 +25,11 @@ class Hangman extends React.Component {
   };
 
   constructor(props) {
-    super(props);
+    super();
     let info = randomWord();
     this.state = {
       stage: 0,
-      guessed: new Set([]),
+      guessed: new Set([" "]),
       answer: info.Vocabulary.toUpperCase(),
       definition: info.Definition,
       difficulty: "Medium",
@@ -48,51 +48,55 @@ class Hangman extends React.Component {
   guessedWord() {
     return this.state.answer
       .split("")
-      .map((char) => (this.state.guessed.has(char) ? char : " _ "));
+      .map((char) => (this.state.guessed.has(char) ? char : "_"));
   }
   generateDifficultyRadios() {
     return (
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Difficulty</FormLabel>
-        <RadioGroup row aria-label="position" name="position">
-          <FormControlLabel
-            control={
-              <Radio
-                checked={this.state.difficulty === "Easy"}
-                onChange={this.handleChange}
-                value="Easy"
-                color="secondary"
-              />
-            }
-            label="Easy"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            control={
-              <Radio
-                checked={this.state.difficulty === "Medium"}
-                onChange={this.handleChange}
-                value="Medium"
-                color="secondary"
-              />
-            }
-            label="Medium"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            control={
-              <Radio
-                checked={this.state.difficulty === "Hard"}
-                onChange={this.handleChange}
-                value="Hard"
-                color="secondary"
-              />
-            }
-            label="Hard"
-            labelPlacement="top"
-          />
-        </RadioGroup>
-      </FormControl>
+      <div className="difficultyContainer">
+        <FormControl component="fieldset">
+          <h3>Difficulty</h3>
+          <RadioGroup
+            row
+            aria-label="position"
+            name="position"
+            onChange={this.handleChange}
+          >
+            <FormControlLabel
+              value="Easy"
+              control={
+                <Radio
+                  checked={this.state.difficulty === "Easy"}
+                  color="secondary"
+                />
+              }
+              label="Easy"
+              labelPlacement="top"
+            />
+            <FormControlLabel
+              value="Medium"
+              control={
+                <Radio
+                  checked={this.state.difficulty === "Medium"}
+                  color="secondary"
+                />
+              }
+              label="Medium"
+              labelPlacement="top"
+            />
+            <FormControlLabel
+              value="Hard"
+              control={
+                <Radio
+                  checked={this.state.difficulty === "Hard"}
+                  color="secondary"
+                />
+              }
+              label="Hard"
+              labelPlacement="top"
+            />
+          </RadioGroup>
+        </FormControl>
+      </div>
     );
   }
   generateButtons() {
@@ -143,7 +147,7 @@ class Hangman extends React.Component {
       .replace(/,/g, "");
     const gameWin = stringAns === this.state.answer;
     return (
-      <div>
+      <div className="hangman-root">
         {difficultSelection}
         <img
           className="image-box"
@@ -156,13 +160,8 @@ class Hangman extends React.Component {
         <div className="hangman-info">
           <p>{this.state.definition}</p>
           <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
-          {gameWin ? (
-            <WinLossModal victory={true} />
-          ) : gameOver ? (
-            <WinLossModal victory={false} />
-          ) : (
-            <p></p>
-          )}
+          {gameWin && <WinLossModal victory={true} />}
+          {gameOver && <WinLossModal victory={false} />}
         </div>
         {gameKeys}
       </div>

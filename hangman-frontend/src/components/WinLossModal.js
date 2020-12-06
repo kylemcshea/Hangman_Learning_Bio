@@ -41,11 +41,11 @@ export default function WinLossModal(prop) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <Button onClick={playAgain} color="primary">
+            Play Again
+          </Button>
           <Button onClick={handleClose} color="primary">
             Close
-          </Button>
-          <Button onClick={playAgain} color="primary">
-            Play Agian
           </Button>
         </DialogActions>
       </Dialog>
