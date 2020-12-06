@@ -55,7 +55,8 @@
   text-align: center;
 }
 
-.hangman-info > * {
+.hangman-info > p,
+.hangman-info > pre {
   font-family: "Nunito";
   font-size: 2rem;
   margin-top: 10px;
