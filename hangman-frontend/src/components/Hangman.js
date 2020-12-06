@@ -5,7 +5,6 @@ import {
   Radio,
   RadioGroup,
   FormControl,
-  FormLabel,
   FormControlLabel,
 } from "@material-ui/core";
 // import Radio from "@material-ui/core/Radio";
@@ -29,7 +28,7 @@ class Hangman extends React.Component {
     let info = randomWord();
     this.state = {
       stage: 0,
-      guessed: new Set([" "]),
+      guessed: new Set([]),
       answer: info.Vocabulary.toUpperCase(),
       definition: info.Definition,
       difficulty: "Medium",
@@ -46,9 +45,15 @@ class Hangman extends React.Component {
     });
   };
   guessedWord() {
-    return this.state.answer
-      .split("")
-      .map((char) => (this.state.guessed.has(char) ? char : "_"));
+    return this.state.answer.split("").map((char) => {
+      if (this.state.guessed.has(char)) {
+        return char;
+      } else if (char === " ") {
+        return "  ";
+      } else {
+        return "_ ";
+      }
+    });
   }
   generateDifficultyRadios() {
     return (
@@ -141,10 +146,8 @@ class Hangman extends React.Component {
     let difficultSelection = this.generateDifficultyRadios();
     const gameOver = this.state.stage >= this.props.maxWrong;
     //String version of the display answer so we can compare to real answer
-    let stringAns = this.guessedWord()
-      .join()
-      .replace(",", "")
-      .replace(/,/g, "");
+    let stringAns = this.guessedWord().reduce((word, letter) => word + letter);
+
     const gameWin = stringAns === this.state.answer;
     return (
       <div className="hangman-root">
@@ -159,7 +162,7 @@ class Hangman extends React.Component {
         ></img>
         <div className="hangman-info">
           <p>{this.state.definition}</p>
-          <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
+          <pre>{!gameOver ? stringAns : this.state.answer}</pre>
           {gameWin && <WinLossModal victory={true} />}
           {gameOver && <WinLossModal victory={false} />}
         </div>
