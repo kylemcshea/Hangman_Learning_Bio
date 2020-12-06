@@ -5,7 +5,6 @@ import {
   Radio,
   RadioGroup,
   FormControl,
-  FormLabel,
   FormControlLabel,
 } from "@material-ui/core";
 // import Radio from "@material-ui/core/Radio";
@@ -26,7 +25,7 @@ class Hangman extends React.Component {
   };
 
   constructor(props) {
-    super(props);
+    super();
     let info = randomWord();
     this.state = {
       stage: 0,
@@ -57,54 +56,63 @@ class Hangman extends React.Component {
     });
   };
   guessedWord() {
-    console.log(this.state.answer);
-    return this.state.answer
-      .split("")
-      .map((char) => (this.state.guessed.has(char) ? char : " _ "));
+    return this.state.answer.split("").map((char) => {
+      if (this.state.guessed.has(char)) {
+        return char;
+      } else if (char === " ") {
+        return "  ";
+      } else {
+        return "_ ";
+      }
+    });
   }
   generateDifficultyRadios() {
     return (
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Difficulty</FormLabel>
-        <RadioGroup row aria-label="position" name="position">
-          <FormControlLabel
-            control={
-              <Radio
-                checked={this.state.difficulty === "Easy"}
-                onChange={this.handleChange}
-                value="Easy"
-                color="secondary"
-              />
-            }
-            label="Easy"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            control={
-              <Radio
-                checked={this.state.difficulty === "Medium"}
-                onChange={this.handleChange}
-                value="Medium"
-                color="secondary"
-              />
-            }
-            label="Medium"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            control={
-              <Radio
-                checked={this.state.difficulty === "Hard"}
-                onChange={this.handleChange}
-                value="Hard"
-                color="secondary"
-              />
-            }
-            label="Hard"
-            labelPlacement="top"
-          />
-        </RadioGroup>
-      </FormControl>
+      <div className="difficultyContainer">
+        <FormControl component="fieldset">
+          <h3>Difficulty</h3>
+          <RadioGroup
+            row
+            aria-label="position"
+            name="position"
+            onChange={this.handleChange}
+          >
+            <FormControlLabel
+              value="Easy"
+              control={
+                <Radio
+                  checked={this.state.difficulty === "Easy"}
+                  color="secondary"
+                />
+              }
+              label="Easy"
+              labelPlacement="top"
+            />
+            <FormControlLabel
+              value="Medium"
+              control={
+                <Radio
+                  checked={this.state.difficulty === "Medium"}
+                  color="secondary"
+                />
+              }
+              label="Medium"
+              labelPlacement="top"
+            />
+            <FormControlLabel
+              value="Hard"
+              control={
+                <Radio
+                  checked={this.state.difficulty === "Hard"}
+                  color="secondary"
+                />
+              }
+              label="Hard"
+              labelPlacement="top"
+            />
+          </RadioGroup>
+        </FormControl>
+      </div>
     );
   }
   generateButtons() {
@@ -149,13 +157,12 @@ class Hangman extends React.Component {
     let difficultSelection = this.generateDifficultyRadios();
     const gameOver = this.state.stage >= this.props.maxWrong;
     //String version of the display answer so we can compare to real answer
-    let stringAns = this.guessedWord()
-      .join()
-      .replace(",", "")
-      .replace(/,/g, "");
+    let stringAns = this.guessedWord().reduce((word, letter) => word + letter);
+
     const gameWin = stringAns === this.state.answer;
     return (
-      <div>
+      <div className="hangman-root">
+        {this.state.guessed.size == 0 && difficultSelection}
         <img
           className="image-box"
           alt={`hangman_${this.state.stage}`}
@@ -165,20 +172,10 @@ class Hangman extends React.Component {
           }
         ></img>
         <div className="hangman-info">
-          {this.state.guessed.size > 0 ? (
-            <></>
-          ) : (
-            <div className="radio">{difficultSelection}</div>
-          )}
           <p>{this.state.definition}</p>
-          <p>{!gameOver ? this.guessedWord() : this.state.answer}</p>
-          {gameWin ? (
-            <WinLossModal victory={true} />
-          ) : gameOver ? (
-            <WinLossModal victory={false} />
-          ) : (
-            <p></p>
-          )}
+          <pre>{!gameOver ? stringAns : this.state.answer}</pre>
+          {gameWin && <WinLossModal victory={true} />}
+          {gameOver && <WinLossModal victory={false} />}
         </div>
         {gameKeys}
       </div>
