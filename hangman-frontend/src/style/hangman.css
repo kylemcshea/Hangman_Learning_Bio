@@ -1,11 +1,18 @@
 .hangman-root {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   min-height: 100vh;
+  justify-content: space-evenly;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .difficultyContainer {
+  margin-top: 10px;
   background-color: rgba(0, 255, 242, 0.5);
   display: flex;
   align-self: center;
