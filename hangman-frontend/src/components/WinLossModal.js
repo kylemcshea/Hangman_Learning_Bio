@@ -27,7 +27,7 @@ export default function WinLossModal(prop) {
 
   return (
     <div>
-      {prop.victory ? <Confetti width={width} height={height} /> : <></>}
+      {prop.victory && <Confetti width={width} height={height} />}
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -47,9 +47,6 @@ export default function WinLossModal(prop) {
         <DialogActions>
           <Button onClick={playAgain} color="primary">
             Play Again
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Close
           </Button>
         </DialogActions>
       </Dialog>
