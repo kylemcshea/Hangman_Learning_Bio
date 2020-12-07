@@ -5,8 +5,10 @@ import ImageCard from "./ImageCard";
 import photos from "../static/imageData";
 import useWindowPosition from "../hook/useWindowPosition";
 const useStyles = makeStyles((theme) => ({
-  game_explained: {
+  game_explained_root: {
     minheight: "100vh",
+  },
+  game_explained: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -15,22 +17,28 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   startGame: {
+    display: "flex",
     textDecoration: "none",
-    alignItems: "center",
+    alignSelf: "center",
     margin: "0 auto",
-    color: "#fff",
     justifyContent: "center",
     fontSize: "2rem",
+    backgroundColor: "#2fcb53",
+    borderColor: "#2fcb53",
+    width: "100%",
+    color: "#fff",
+    padding: "4px",
   },
 }));
 export default function GameExplained() {
   const classes = useStyles();
   const checked = useWindowPosition("header");
   return (
-    <div>
+    <div className={classes.game_explained_root}>
       <div className={classes.game_explained} id="game-explained">
         <ImageCard photo={photos[0]} checked={checked} />
         <ImageCard photo={photos[1]} checked={checked} />
+        <ImageCard photo={photos[2]} checked={checked} />
       </div>
       <div className={classes.startGameWrapper}>
         <a className={classes.startGame} href="/Hangman.js">

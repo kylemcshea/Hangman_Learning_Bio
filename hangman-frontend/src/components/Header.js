@@ -56,9 +56,6 @@ export default function Header() {
           <h1 className={classes.appbarTitle}>
             Hangman <span className={classes.colorTitle}>Learning.</span>
           </h1>
-          <IconButton>
-            <SortIcon className={classes.icon} />
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Collapse

@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     backgroundColor: "rgba(0,0,0,0.2)",
-    color: "#fff",
+    color: "#000000",
     margin: "20px",
   },
   media: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   desc: {
     fontFamily: "Nunito",
     fontSize: "1.1rem",
-    color: "#ddd",
+    color: "#000000",
   },
 });
 
