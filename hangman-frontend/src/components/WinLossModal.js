@@ -47,7 +47,7 @@ export default function WinLossModal(prop) {
           </DialogContentText>
         </DialogContent>
         <DialogActions className="wrapper">
-          <Button className="fkinbutton" onClick={playAgain} color="primary">
+          <Button onClick={playAgain} color="primary">
             Play Again
           </Button>
         </DialogActions>
