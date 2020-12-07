@@ -1,24 +1,12 @@
 import React from "react";
-import {
-  Button,
-  Radio,
-  RadioGroup,
-  FormControl,
-  FormControlLabel,
-} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import alphabet from "../static/alphabet";
 import "../style/hangman.css";
 import { randomWord } from "./Words";
 import WinLossModal from "./WinLossModal";
+import Difficulty from "./Difficulty";
 
 class Hangman extends React.Component {
-  handleChange = (event) => {
-    const max = Number(event.target.value);
-    this.setState({
-      maxWrong: max,
-    });
-  };
-
   constructor(props) {
     super();
     const rand = Math.floor(Math.random() * Math.floor(2)) + 1;
@@ -32,6 +20,14 @@ class Hangman extends React.Component {
       definition: info.Definition,
     };
   }
+
+  handleChange = (value) => {
+    console.log(value);
+    this.setState({
+      maxWrong: value,
+    });
+  };
+
   handleClick = (e) => {
     let letter = e;
     console.log(letter);
@@ -52,46 +48,6 @@ class Hangman extends React.Component {
         return "_ ";
       }
     });
-  }
-  generateDifficultyRadios() {
-    return (
-      <div className="difficultyContainer">
-        <FormControl component="fieldset">
-          <h3>Difficulty</h3>
-          <RadioGroup
-            row
-            aria-label="position"
-            name="position"
-            onChange={this.handleChange}
-          >
-            <FormControlLabel
-              value="12"
-              control={
-                <Radio checked={this.state.maxWrong === 12} color="secondary" />
-              }
-              label="Easy"
-              labelPlacement="top"
-            />
-            <FormControlLabel
-              value="6"
-              control={
-                <Radio checked={this.state.maxWrong === 6} color="secondary" />
-              }
-              label="Medium"
-              labelPlacement="top"
-            />
-            <FormControlLabel
-              value="4"
-              control={
-                <Radio checked={this.state.maxWrong === 4} color="secondary" />
-              }
-              label="Hard"
-              labelPlacement="top"
-            />
-          </RadioGroup>
-        </FormControl>
-      </div>
-    );
   }
   generateButtons() {
     return (
@@ -132,7 +88,6 @@ class Hangman extends React.Component {
     //Buttons for game
     let gameKeys = this.generateButtons();
     //Difficulty Radio Buttons
-    let difficultSelection = this.generateDifficultyRadios();
     const gameOver = this.state.stage >= this.state.maxWrong;
     //String version of the display answer so we can compare to real answer
     let stringAns = this.guessedWord().reduce((word, letter) => word + letter);
@@ -140,7 +95,7 @@ class Hangman extends React.Component {
     const gameWin = stringAns === this.state.answer;
     return (
       <div className="hangman-root">
-        {this.state.guessed.size === 0 && difficultSelection}
+        <Difficulty updateState={this.handleChange} />
         <img
           className="image-box"
           alt={`hangman_${this.state.stage}`}
