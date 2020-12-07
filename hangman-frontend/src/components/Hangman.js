@@ -1,5 +1,4 @@
 import React from "react";
-// import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
   Radio,
@@ -7,20 +6,16 @@ import {
   FormControl,
   FormControlLabel,
 } from "@material-ui/core";
-// import Radio from "@material-ui/core/Radio";
 import alphabet from "../static/alphabet";
 import "../style/hangman.css";
 import { randomWord } from "./Words";
 import WinLossModal from "./WinLossModal";
 
 class Hangman extends React.Component {
-  static defaultProps = {
-    maxWrong: 12,
-  };
-
   handleChange = (event) => {
+    const max = Number(event.target.value);
     this.setState({
-      difficulty: event.target.value,
+      maxWrong: max,
     });
   };
 
@@ -30,9 +25,9 @@ class Hangman extends React.Component {
     this.state = {
       stage: 0,
       guessed: new Set([]),
+      maxWrong: 6,
       answer: info.Vocabulary.toUpperCase(),
       definition: info.Definition,
-      difficulty: "Medium",
     };
   }
   handleClick = (e) => {
@@ -41,17 +36,7 @@ class Hangman extends React.Component {
     this.setState((st) => {
       return {
         guessed: st.guessed.add(letter),
-        stage:
-          st.stage +
-          (st.answer.includes(letter)
-            ? 0
-            : st.difficulty == "Easy"
-            ? 1
-            : st.difficulty == "Medium"
-            ? 2
-            : st.difficulty == "Hard"
-            ? 3
-            : ""),
+        stage: st.stage + (st.answer.includes(letter) ? 0 : 1),
       };
     });
   };
@@ -78,34 +63,25 @@ class Hangman extends React.Component {
             onChange={this.handleChange}
           >
             <FormControlLabel
-              value="Easy"
+              value="12"
               control={
-                <Radio
-                  checked={this.state.difficulty === "Easy"}
-                  color="secondary"
-                />
+                <Radio checked={this.state.maxWrong === 12} color="secondary" />
               }
               label="Easy"
               labelPlacement="top"
             />
             <FormControlLabel
-              value="Medium"
+              value="6"
               control={
-                <Radio
-                  checked={this.state.difficulty === "Medium"}
-                  color="secondary"
-                />
+                <Radio checked={this.state.maxWrong === 6} color="secondary" />
               }
               label="Medium"
               labelPlacement="top"
             />
             <FormControlLabel
-              value="Hard"
+              value="3"
               control={
-                <Radio
-                  checked={this.state.difficulty === "Hard"}
-                  color="secondary"
-                />
+                <Radio checked={this.state.maxWrong === 3} color="secondary" />
               }
               label="Hard"
               labelPlacement="top"
@@ -155,7 +131,7 @@ class Hangman extends React.Component {
     let gameKeys = this.generateButtons();
     //Difficulty Radio Buttons
     let difficultSelection = this.generateDifficultyRadios();
-    const gameOver = this.state.stage >= this.props.maxWrong;
+    const gameOver = this.state.stage >= this.state.maxWrong;
     //String version of the display answer so we can compare to real answer
     let stringAns = this.guessedWord().reduce((word, letter) => word + letter);
 
