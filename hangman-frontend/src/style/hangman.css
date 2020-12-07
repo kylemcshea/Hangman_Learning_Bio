@@ -1,6 +1,7 @@
 .hangman-root {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   min-height: 100vh;
 }
 
