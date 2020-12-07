@@ -8,6 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
+import "../style/modals.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -33,19 +34,20 @@ export default function WinLossModal(prop) {
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">
+        <DialogTitle className="title" id="alert-dialog-slide-title">
           {prop.victory ? "Congratulations" : "Game Over"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
+          <DialogContentText
+            className="title"
+            id="alert-dialog-slide-description"
+          >
             {prop.victory ? "You Win" : "You Lose"}!
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={playAgain} color="primary">
+        <DialogActions className="wrapper">
+          <Button className="fkinbutton" onClick={playAgain} color="primary">
             Play Again
           </Button>
         </DialogActions>

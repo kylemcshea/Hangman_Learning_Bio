@@ -5,6 +5,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 // import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
+import "../style/modals.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -36,10 +37,14 @@ export default function Difficulty(props) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">Difficulty</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title" className="title">
+          Difficulty
+        </DialogTitle>
         <DialogActions>
           {["Easy", "Medium", "Hard"].map((diff) => (
-            <Button onClick={() => handleClose(diff)}>{diff}</Button>
+            <Button className={diff} onClick={() => handleClose(diff)}>
+              {diff}
+            </Button>
           ))}
         </DialogActions>
       </Dialog>

@@ -43,13 +43,16 @@ class Hangman extends React.Component {
       if (this.state.guessed.has(char)) {
         return char;
       } else if (char === " ") {
-        return "  ";
+        return " ";
       } else {
         return "_ ";
       }
     });
   }
   generateButtons() {
+    let stringAns = this.guessedWord().reduce((word, letter) => word + letter);
+    const gameOver = this.state.stage >= this.state.maxWrong;
+    const gameWin = stringAns === this.state.answer;
     return (
       <div className="buttonContainer">
         <div className="alphaBox1">
@@ -57,7 +60,11 @@ class Hangman extends React.Component {
             <Button
               key={key}
               onClick={() => this.handleClick(char.toUpperCase())}
-              disabled={this.state.guessed.has(char.toUpperCase())}
+              disabled={
+                this.state.guessed.has(char.toUpperCase()) ||
+                gameOver ||
+                gameWin
+              }
               className="buttonGroup"
               variant="contained"
               color="primary"
@@ -72,7 +79,11 @@ class Hangman extends React.Component {
             <Button
               key={key}
               onClick={() => this.handleClick(char.toUpperCase())}
-              disabled={this.state.guessed.has(char.toUpperCase())}
+              disabled={
+                this.state.guessed.has(char.toUpperCase()) ||
+                gameOver ||
+                gameWin
+              }
               className="buttonGroup"
               variant="contained"
               color="primary"
@@ -85,6 +96,7 @@ class Hangman extends React.Component {
     );
   }
   render() {
+    console.log(this.state.answer);
     //Buttons for game
     let gameKeys = this.generateButtons();
     //Difficulty Radio Buttons

@@ -1,0 +1,19 @@
+.title {
+  text-align: center;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.fkinbutton {
+  margin: 0 auto;
+}
+.Easy {
+  color: green !important;
+}
+.Medium {
+  color: blue !important;
+}
+.Hard {
+  color: red !important;
+}
