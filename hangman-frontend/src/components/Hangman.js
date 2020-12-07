@@ -21,10 +21,12 @@ class Hangman extends React.Component {
 
   constructor(props) {
     super();
+    const rand = Math.floor(Math.random() * Math.floor(2)) + 1;
     let info = randomWord();
     this.state = {
       stage: 0,
       guessed: new Set([]),
+      picVal: rand,
       maxWrong: 6,
       answer: info.Vocabulary.toUpperCase(),
       definition: info.Definition,
@@ -79,9 +81,9 @@ class Hangman extends React.Component {
               labelPlacement="top"
             />
             <FormControlLabel
-              value="3"
+              value="4"
               control={
-                <Radio checked={this.state.maxWrong === 3} color="secondary" />
+                <Radio checked={this.state.maxWrong === 4} color="secondary" />
               }
               label="Hard"
               labelPlacement="top"
@@ -102,7 +104,7 @@ class Hangman extends React.Component {
               disabled={this.state.guessed.has(char.toUpperCase())}
               className="buttonGroup"
               variant="contained"
-              color="secondary"
+              color="primary"
             >
               {char.toUpperCase()}
             </Button>
@@ -117,7 +119,7 @@ class Hangman extends React.Component {
               disabled={this.state.guessed.has(char.toUpperCase())}
               className="buttonGroup"
               variant="contained"
-              color="secondary"
+              color="primary"
             >
               {char.toUpperCase()}
             </Button>
@@ -144,7 +146,9 @@ class Hangman extends React.Component {
           alt={`hangman_${this.state.stage}`}
           src={
             process.env.PUBLIC_URL +
-            `/assets/hangman_step_${this.state.stage}.png`
+            `/assets/${this.state.picVal}_hangman_step_${
+              (12 / this.state.maxWrong) * this.state.stage
+            }.png`
           }
         ></img>
         <div className="hangman-info">
